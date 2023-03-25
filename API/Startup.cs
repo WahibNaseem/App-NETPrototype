@@ -23,7 +23,15 @@ namespace API
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllers();
-      services.AddDbContext<MessageContext>(opts => opts.UseSqlite(_config.GetConnectionString("BroadCastConnection")));
+      services.AddDbContext<MessageContext>(x => x.UseSqlite(_config.GetConnectionString("BroadCastConnection")));
+      services.AddCors(opts =>
+      {
+        opts.AddPolicy("SPAPolicy", policy =>
+        {
+          policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+        });
+
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +45,7 @@ namespace API
       app.UseHttpsRedirection();
 
       app.UseRouting();
+      app.UseCors("SPAPolicy");
 
       app.UseAuthorization();
 

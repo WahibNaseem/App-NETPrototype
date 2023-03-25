@@ -1,0 +1,29 @@
+<h2>HTTP Call to desktop</h2>
+<br>
+<div class="col-md-4">
+
+  <form #messageForm="ngForm" (ngSubmit)="sendMessage()">
+    <div class="form-group">
+      <label for="" class="control-label">Enter Message to send</label>
+      <input type="text" class="form-control" [(ngModel)]="message.text" name="text" #text="ngModel" required>
+
+    </div>
+    <button class="btn btn-success btn-block" [disabled]="!messageForm.form.valid">Send</button>
+
+  </form>
+</div>
+<div class="col-md-12"></div>
+
+
+<div class="col-md-4">
+  <ul class="messageList">
+    <li *ngFor="let item of messages">
+      <span>{{item.text}}</span>
+    </li>
+  </ul>
+  <button class="btn btn-success btn-block" (click)="refresh()">Refresh</button>
+</div>
+
+<div>
+
+</div>

@@ -10,7 +10,7 @@ import { MessageService } from 'src/_services/message.service';
 export class MessageComponent implements OnInit {
 
   messages: Message[] = [];
-  message = new Message('', 'Web');
+  message = new Message('', 'web');
   constructor(private messageService: MessageService) { }
   ngOnInit() {
     this.refresh();

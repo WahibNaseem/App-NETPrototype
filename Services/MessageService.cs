@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Core;
 using Core.Domain;
 using Services.Dto;
@@ -8,25 +10,30 @@ using Services.Interfaces;
 namespace Services
 {
     public class MessageService : IMessageService
-  {
-    private readonly IUnitOfWork _unitOfWork;
-
-    public MessageService(IUnitOfWork unitOfWork)
     {
-      _unitOfWork = unitOfWork;
-    }
-    public async Task AddMessageAsync(NewMessageDto newMessage)
-    {
-      _unitOfWork.Messages.Add(new Message() { Text = "Hi Good Morning", Sender = "Web" });
-      await _unitOfWork.Complete();
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-    }
+        public MessageService(IUnitOfWork unitOfWork,  IMapper mapper)
+        {
+            _unitOfWork = unitOfWork;
+            _mapper=mapper;
+        }
+        public async Task AddMessageAsync(NewMessageDto newMessage)
+        {
+            var messageToAdd = _mapper.Map<Message>(newMessage);
 
-    public async Task<IReadOnlyList<MessageListDto>> GetAllMessageAsync(string param)
-    {
-      var messageList = await _unitOfWork.Messages.GetAllAsync();
+            _unitOfWork.Messages.Add(messageToAdd);
+            await _unitOfWork.Complete();
+        }
 
-      return new List<MessageListDto>();
+        public async Task<IReadOnlyList<MessageListDto>> GetAllMessageAsync(string param)
+        {
+            var messageList = await _unitOfWork.Messages.GetAllAsync();
+            var listToFilter = messageList.Where(x => x.Sender.ToLower() == param.ToLower()).ToList();
+            var messagesToReturn = _mapper.Map<IReadOnlyList<Message>, IReadOnlyList<MessageListDto>>(listToFilter);
+
+            return messagesToReturn;
+        }
     }
-  }
 }

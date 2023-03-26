@@ -1,3 +1,4 @@
+using AutoMapper;
 using Infrastructure.Persistance.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Services.Extensions;
+using Services.Helpers;
 
 namespace API
 {
@@ -22,9 +24,10 @@ namespace API
       services.AddControllers();
       services.AddDbContext<MessageContext>(x => x.UseSqlite(_config.GetConnectionString("BroadCastConnection")));
       services.AddApplicationServices();
+      services.AddAutoMapper(typeof(MappingProfiles));
 
 
-      services.AddCors(opts =>
+            services.AddCors(opts =>
       {
         opts.AddPolicy("SPAPolicy", policy =>
         {

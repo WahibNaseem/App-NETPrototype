@@ -6,7 +6,7 @@ using Infrastructure.Repositories;
 
 namespace Infrastructure.Persistance
 {
-  public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
   {
     private readonly MessageContext _context;
     public UnitOfWork(MessageContext context)

@@ -1,29 +1,28 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Infrastructure.Data;
-using Core.Entities;
+using Core.Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Services.Interfaces;
+using Services.Dto;
 
 namespace API.Controllers
 {
-  [ApiController]
+    [ApiController]
   [Route("api/[controller]")]
   public class BroadCastMessagesController : ControllerBase
   {
-    private readonly MessageContext _context;
+        private readonly IMessageService _msgService;
 
-    public BroadCastMessagesController(MessageContext context)
+        public BroadCastMessagesController(IMessageService msgService)
     {
-      _context = context;
-
-    }
+            _msgService=msgService;
+        }
 
     [HttpGet]
     public async Task<ActionResult<IList<Message>>> GetMessages()
     {
-      var messages = await _context.Messages.ToListAsync();
-      return Ok(messages);
+            var messages = await _msgService.GetAllMessageAsync("");
+           return Ok(messages);
     }
 
     [HttpPost("message")]
@@ -34,8 +33,7 @@ namespace API.Controllers
         return BadRequest();
       }
 
-      _context.Messages.Add(message);
-      await _context.SaveChangesAsync();
+         await   _msgService.AddMessageAsync(new NewMessageDto());
 
       return Ok();
     }

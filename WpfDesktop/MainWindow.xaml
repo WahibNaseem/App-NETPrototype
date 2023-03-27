@@ -26,7 +26,7 @@
 
             <Button x:Name="btn_RefreshHttp"
                           Padding="20,10"
-                          Margin="20">
+                          Margin="20" Click="btn_RefreshHttp_Click">
                 Refresh Http
             </Button>            
             
@@ -41,7 +41,7 @@
                            Margin="20" />
 
             <Button x:Name="btn_SendOverHttp"
-                          Padding="20,10">
+                          Padding="20,10" Click="btn_SendOverHttp_Click">
                          Show over web                    
                 </Button>
             

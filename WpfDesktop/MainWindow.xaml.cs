@@ -1,9 +1,9 @@
 ﻿using System.Windows;
-using WpfDesktop.Services;
-using WpfDesktop.Utils;
-using WpfDesktop.ViewModels;
+using WPFDesktop.Services;
+using WPFDesktop.Utils;
+using WPFDesktop.ViewModels;
 
-namespace WpfDesktop
+namespace WPFDesktop
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

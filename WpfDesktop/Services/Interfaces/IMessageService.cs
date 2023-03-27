@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using WpfDesktop.ViewModels;
+using WPFDesktop.ViewModels;
 
-namespace WpfDesktop.Services
+namespace WPFDesktop.Services
 {
     public interface IMessageService
     {

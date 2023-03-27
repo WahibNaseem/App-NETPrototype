@@ -1,7 +1,7 @@
-﻿<Application x:Class="WpfDesktop.App"
+﻿<Application x:Class="WPFDesktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WpfDesktop"
+             xmlns:local="clr-namespace:WPFDesktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

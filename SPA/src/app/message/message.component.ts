@@ -13,12 +13,11 @@ export class MessageComponent implements OnInit {
   message = new Message('', 'web');
   constructor(private messageService: MessageService) { }
   ngOnInit() {
-    this.refresh();
   }
 
   sendMessage() {
     this.messageService.sendMessage(this.message).subscribe(() => {
-      this.refresh();
+      this.getMessages();
       this.message.text = '';
     });
 
@@ -28,8 +27,6 @@ export class MessageComponent implements OnInit {
     this.messageService.get().subscribe(response => this.messages = response);
   }
 
-  refresh() {
-    this.getMessages();
-  }
+
 
 }

@@ -1,8 +1,8 @@
-﻿namespace WpfDesktop.Utils
+﻿namespace WPFDesktop.Utils
 {
-    public enum BroadCastSource
-    {
-        desktop,
-        web
-    }
+  public enum BroadCastSource
+  {
+    desktop,
+    web
+  }
 }

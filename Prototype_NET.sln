@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{4A35F450-D59B-4B29-A8D2-B9AAD56BF882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDesktop", "WpfDesktop\WpfDesktop.csproj", "{B88386F9-90D9-4E42-8F4F-80383559203E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDesktop", "WPFDesktop\WPFDesktop.csproj", "{B88386F9-90D9-4E42-8F4F-80383559203E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
